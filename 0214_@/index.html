@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>하이</h1>
+    <button>서버의 데이터를 가져오자!</button>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+        const btn = document.querySelector("button");
+        btn.addEventListener("click", async () => {
+            try {
+                const response = await axios.get("http://localhost:8080/api/info");
+                console.log(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        })
+    </script>
+</body>
+</html>
