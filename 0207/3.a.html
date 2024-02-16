@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js" integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const url = "https://jsonplaceholder.typicode.com/todos/";
+        axios.get(url).then(res => {
+            console.log(res);
+            console.log(res.data);
+            const lastData = res.data.find(li => li.id === 200);
+            console.log(lastData);
+            console.log(lastData.id);
+            // 어? 분명히 콜백헬 해결한다 했는데 얘도 반복하니까 깊이가 생기네?
+            // 이걸 해결하기 위해 async/await 등장 <- 
+            axios.get(url + lastData.id).then(result => console.log(result));
+
+
+            // 중첩 요청
+            // id가 200인 경우 "https://jsonplaceholder.typicode.com/todos/200"
+
+            
+        }).catch(error => {
+            console.log(error);
+        })
+    </script>
+</body>
+</html>

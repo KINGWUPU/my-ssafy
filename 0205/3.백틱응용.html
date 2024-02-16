@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+
+        
+    </ul>
+    
+    <script>
+        const htmlTag=`
+        <button>
+            안녕하세요
+        </button>
+        `;
+
+        // const hello = (a) => '<div> <button>${a}</button></div>';
+
+        const body = document.querySelector('body');
+        
+        // insertAdjacentHTML(position, 문자열 형식의 태그)
+        
+
+        // beforebegin  <- 요소 이전
+        // afterbegin   <- 요소 바로 안의 처음 자식 이전
+        
+        // beforeend    <- 요소 바로 안의 마지막 자식 이후
+        // afterend     <- 요소 이후에 위치
+
+        body.insertAdjacentHTML('beforeend', htmlTag);
+        
+        const arr = [1,2,3];
+
+        const list = (number) => `
+        <li>
+            ${number}
+        </li>
+        `;
+
+        let html = '';
+        for (let i =0;i<arr.length; i++){
+            html += list(arr[i]);
+        };
+
+        const ul = document.querySelector('ul');
+
+        ul.insertAdjacentHTML('beforeend', html);
+        console.log(html);
+
+    </script>
+</body>
+</html>

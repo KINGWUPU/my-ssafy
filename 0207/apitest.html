@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const url = "https://www.googleapis.com/youtube/v3";
+        const key = "AIzaSyD3eG8u3u_a3mmJY5wj64-APQ_Cogf_VYY";
+        async function getVideos(word) {
+            try {
+                const response = await axios.get(`${url}/search`, {
+                    params: {
+                        key: key,
+                        part: "snippet",
+                        type: "video",
+                        q: word,
+                        maxResults: 10,
+                    },
+                });
+                console.log(response.data.items);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        getVideos("ssafy");
+
+    </script>
+    
+</body>
+</html>

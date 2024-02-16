@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="input">Input: </label>
+        <input type="text" id="input" />
+    </div>
+    <div>
+        <label for="output">Output: </label>
+        <span id="output"></span>
+    </div>
+    <script>
+        const badWords = ["바보", "멍청", "메롱"];
+        const input = document.querySelector("#input");
+        const output = document.querySelector("#output");
+
+        // console.dir(input);
+        // console.dir(output);
+
+        input.addEventListener("input", (e) => {
+            // console.log(e.target.value);
+            let value = e.target.value;
+            badWords.forEach((word) => {
+                if(value.includes(word)){
+                    const stars = "*".repeat(word.length);
+                    value = value.split(word).join(stars);
+                }
+            });
+            output.textContent = value;
+        });
+    </script>
+</body>
+</html>
